@@ -1,0 +1,21 @@
+[
+      {
+            "id": "numPad",
+            "pines": [
+                  1
+            ],
+            "tipo": "digital",
+            "nombre": "pad entrada"
+      },
+      {
+            "id": "humedad",
+            "pines": [
+                  1,
+                  2,
+                  3,
+                  4
+            ],
+            "tipo": "Analogo",
+            "nombre": "cuarto 1"
+      }
+]
