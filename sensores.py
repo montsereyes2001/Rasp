@@ -58,12 +58,12 @@ class Sensores():
             raise StopIteration
 
     def lecturas(self,sensor):
-        if(sensor.id == 'US'):
-            self.ultra1(sensor)
-        elif (sensor.id == 'humedad'):
-            self.temHum1(sensor)
-        elif (sensor.id == 'numPad'):
-            self.numPad(sensor)
+        if(sensor.tipo == 'US'):
+            self.ultra(sensor)
+        elif (sensor.tipo == 'HT'):
+            self.temHum(sensor)
+        #elif (sensor.tipo == ''):
+         #   self.numPad(sensor)
         else:
             return 'el sensor no es valido'
     
