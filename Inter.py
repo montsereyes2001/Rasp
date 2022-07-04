@@ -27,6 +27,8 @@ class Interfaz():
         s.nombre=input("Nombre del sensor: ")
         self.listaSensores.add(s)
         self.listaSensores.obj()
+        print("-" * 10 + "Oprime enter para continuar" + "-" * 10)
+        input()
 
     def modS(self):
         self.getSensores()
@@ -46,6 +48,8 @@ class Interfaz():
         cadena3 = input("Ingrese el nombre del sensor: ")
         s.nombre = cadena3
         self.listaSensores.obj()
+        print("-" * 10 + "Oprime enter para continuar" + "-" * 10)
+        input()
 
     def getSensores(self, lista=None):
         print("-" * 10 + " Datos de los sensores " + "-" * 10)
@@ -65,6 +69,8 @@ class Interfaz():
         s=self.listaSensores.get()[id]
         self.listaSensores.dlt(s)
         self.listaSensores.obj()
+        print("-" * 10 + "Oprime enter para continuar" + "-" * 10)
+        input()
 
     def menu(self):
         s=Sensores()

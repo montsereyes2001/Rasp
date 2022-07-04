@@ -58,12 +58,12 @@ class Sensores():
             raise StopIteration
 
     def lecturas(self,sensor):
-        if(sensor.id == 'US'):
-            self.ultra1(sensor)
-        elif (sensor.id == 'humedad'):
-            self.temHum1(sensor)
-        elif (sensor.id == 'numPad'):
-            self.numPad(sensor)
+        if(sensor.tipo == 'US'):
+            self.ultra(sensor)
+        elif (sensor.tipo == 'TH'):
+            self.temHum(sensor)
+        #elif (sensor.id == 'numPad'):
+         #   self.numPad(sensor)
         else:
             return 'el sensor no es valido'
     
@@ -85,10 +85,10 @@ class Sensores():
         GPIO.cleanup()
         return distance
     
-    def ultra1(self,sensor):
-        return sensor
-    def temHum1(self,sensor):
-        return sensor
+    #def ultra1(self,sensor):
+     #   return sensor
+    #def temHum1(self,sensor):
+     #   return sensor
 
     def temHum(self,sensor):
         print('Inicia')
@@ -101,7 +101,7 @@ class Sensores():
 
         time.sleep(0.25) #Cada segundo se evalúa el sensor
 
-    def numPad(self, sensor):
-        i=0
-        for x in sensor.pines:
-            i+=1
+    #def numPad(self, sensor):
+     #   i=0
+      #  for x in sensor.pines:
+       #     i+=1
