@@ -109,7 +109,7 @@ class Sensores():
         
         GPIO.cleanup()#arreglo de objetos
 
-    def medJson(self):
+    #def medJson(self):
 
     #def ultra1(self,sensor):
      #   return sensor
