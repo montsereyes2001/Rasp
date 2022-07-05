@@ -3,6 +3,7 @@
 #import time
 #GPIO.setmode(GPIO.BCM)
 import json
+from datetime import datetime
 
 class Sensores():
     def __init__(self, id='', pines=[],tipo='', nombre=''):
@@ -81,8 +82,11 @@ class Sensores():
         sig_time = end-start
          #Centimetros:
         distance = sig_time / 0.000058
-        print('Distance: {} centimetros'.format(distance))
-        GPIO.cleanup()
+        dt = datetime.now()
+        print('Distance: {} centimetros'.format(distance)+' at '+dt)#fecha y hora en el json, junto con los datos y las lecturas, 
+                                                            #regresada en cada lectura del sensor para despues insertarlo en el json
+        
+        GPIO.cleanup()#arreglo de objetos
         return distance
     
     #def ultra1(self,sensor):
@@ -96,10 +100,11 @@ class Sensores():
         pin = sensores.pin[0] #Pin en la raspberry donde conectamos el sensor
         print('Leyendo')
         humedad, temperatura = Adafruit_DHT.read_retry(sensor, pin)
-        print ('Humedad: ' , humedad)
-        print ('Temperatura: ' , temperatura)
-
+        print ('Humedad: ' , humedad + ' at '+dt)
+        print ('Temperatura: ' , temperatura + ' at '+dt)
+        dt = datetime.now()
         time.sleep(0.25) #Cada segundo se evalúa el sensor
+        #debe regresar dos objetos, uno de temperatura y uno de humedad, donde todos regresan arreglos.
 
     #def numPad(self, sensor):
      #   i=0
