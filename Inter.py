@@ -33,7 +33,7 @@ class Interfaz():
     def modS(self):
         self.getSensores()
         print("")
-        id=input("Ingrese el numero del grupo que desea modificar: ")
+        id=input("Ingrese el numero del sensor que desea modificar: ")
         s=Sensores()
         s.get[id]
         cadena = input("Ingrese el id del sensor: ")
@@ -65,7 +65,7 @@ class Interfaz():
 
     def delSen(self):
         self.getSensores()
-        id=input("Ingrese el numero del grupo que desea modificar: ")
+        id=input("Ingrese el numero del sensor que desea eliminar: ")
         s=self.listaSensores.get()[id]
         self.listaSensores.dlt(s)
         self.listaSensores.obj()
@@ -97,10 +97,9 @@ class Interfaz():
                 input()
             elif x== 5:
                 self.getSensores()
-                id=int(input("Ingrese el numero del grupo que desea modificar: "))
+                id=int(input("Ingrese el numero del sensor deseado: "))
                 sensor=self.listaSensores.get()[id]
-                print(sensor)
-                print(s.lecturas(sensor))
+                s.lecturas(sensor)
             elif x==0:
                 print("saliendo...")
                 break

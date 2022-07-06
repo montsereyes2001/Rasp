@@ -17,5 +17,14 @@
             ],
             "tipo": "Analogo",
             "nombre": "cuarto 1"
+      },
+      {
+            "id": "Ultra",
+            "pines": [
+                  2,
+                  3
+            ],
+            "tipo": "US",
+            "nombre": "puerta de entrada"
       }
 ]

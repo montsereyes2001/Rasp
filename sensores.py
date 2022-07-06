@@ -4,7 +4,8 @@
 #GPIO.setmode(GPIO.BCM)
 import json
 from datetime import datetime
-from pymongo import MongoClient 
+from pymongo import MongoClient
+import ultrasonico 
 
 class Sensores():
     def __init__(self, id='', pines=[],tipo='', nombre=''):
@@ -47,7 +48,7 @@ class Sensores():
             json.dump(lista,file,indent=6)
         return lista
 
-    def save(self):
+    """def save(self):
             myclient = MongoClient("mongodb://localhost:27017/")
             db = myclient["d"] 
             Collection = db["Sensores"]   
@@ -56,7 +57,7 @@ class Sensores():
             if isinstance(file_data, list): 
                 Collection.insert_many(file_data)   
             else: 
-                Collection.insert_one(file_data)
+                Collection.insert_one(file_data)"""
 
     def __iter__(self):
             self.__idx__ = 0
@@ -72,7 +73,11 @@ class Sensores():
 
     def lecturas(self,sensor):
         if(sensor.tipo == 'US'):
-            self.ultra(sensor)
+            #self.ultra(sensor)
+            print("----")
+            u=ultrasonico.ultra(sensor)
+            u.prueba()
+            print("----")
         elif (sensor.tipo == 'TH'):
             self.temHum(sensor)
         #elif (sensor.id == 'numPad'):
@@ -103,8 +108,8 @@ class Sensores():
         }
         with open('med.json', 'a') as file:
             json.dump(medicion,file,indent=6)
-        self.save()
-        print('Distance: {} centimetros'.format(distance)+' at '+dt)#fecha y hora en el json, junto con los datos y las lecturas, 
+        #self.save()
+        print('Distance: {} centimetros'.format(distance)+' at '+ dt)#fecha y hora en el json, junto con los datos y las lecturas, 
                                                             #regresada en cada lectura del sensor para despues insertarlo en el json
         
         GPIO.cleanup()#arreglo de objetos
