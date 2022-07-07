@@ -4,7 +4,7 @@
 #GPIO.setmode(GPIO.BCM)
 import json
 from datetime import datetime
-from pymongo import MongoClient
+#from pymongo import MongoClient
 import ultrasonico 
 
 class Sensores():
@@ -75,7 +75,8 @@ class Sensores():
         if(sensor.tipo == 'US'):
             #self.ultra(sensor)
             print("----")
-            u=ultrasonico.ultra(sensor)
+            u=ultrasonico.ultra()
+            u.read()
             u.prueba()
             print("----")
         elif (sensor.tipo == 'TH'):

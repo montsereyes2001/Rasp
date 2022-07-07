@@ -11,21 +11,26 @@ class ultra:
         self.medicion=''
         self.dateTime=''
 
-    def read(self, sensor):
+    def read(self):
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(sensor.pines[0],GPIO.OUT)#trigger pin 21
-        GPIO.setup(sensor.pines[1],GPIO.IN)#echo pin 20
-        GPIO.output(sensor.pines[0], True)
-        time.sleep(1)
-        GPIO.output(sensor.pines[0], False)
-        while GPIO.input(self.pines[1]) == False:
+        T=self.sensor.pines[0]
+        E=self.sensor.pines[1]
+        GPIO.setup(T,GPIO.OUT)#trigger pin 21
+        GPIO.setup(E,GPIO.IN)#echo pin 20
+        GPIO.output(T, GPIO.HIGH)
+        time.sleep(0.00001)
+        GPIO.output(T, GPIO.LOW)
+        while True:
             start = time.time()
-        while GPIO.input(self.pines [1]) == True:
+            if GPIO.input(E) == GPIO.HIGH:
+                break
+        while True:
             end = time.time()
-        self.medicionU(sensor)
+            if GPIO.input(E)==GPIO.LOW:
+                break
         sig_time = end-start
          #Centimetros:
-        distance = sig_time / 0.000058
+        distance = 34400*sig_time/2
         dt = datetime.now()
         self.dicc(distance,dt)
         print('Distance: {} centimetros'.format(distance)+' at '+ dt)#fecha y hora en el json, junto con los datos y las lecturas, 
