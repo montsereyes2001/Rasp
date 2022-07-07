@@ -124,9 +124,11 @@ class Sensores():
     def temHum(self,sensor):
         print('Inicia')
         sensor = Adafruit_DHT.DHT11 #Cambia por DHT22 y si usas dicho sensor
-        pin = sensor.pines[0] #Pin en la raspberry donde conectamos el sensor
+        #pin = sensor.pines[0] #Pin en la raspberry donde conectamos el sensor
+        for pin in sensor.pines:
+            p=pin
         print('Leyendo')
-        humedad, temperatura = Adafruit_DHT.read_retry(sensor, pin)
+        humedad, temperatura = Adafruit_DHT.read_retry(sensor, p)
         print ('Humedad: ' , humedad + ' at '+dt)
         print ('Temperatura: ' , temperatura + ' at '+dt)
         dt = datetime.now()
