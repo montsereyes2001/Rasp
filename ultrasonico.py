@@ -13,8 +13,8 @@ class ultra:
 
     def read(self, sensor):
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(sensor.pines[0],GPIO.OUT)
-        GPIO.setup(sensor.pines[1],GPIO.IN)
+        GPIO.setup(sensor.pines[0],GPIO.OUT)#trigger pin 21
+        GPIO.setup(sensor.pines[1],GPIO.IN)#echo pin 20
         GPIO.output(sensor.pines[0], True)
         time.sleep(1)
         GPIO.output(sensor.pines[0], False)
